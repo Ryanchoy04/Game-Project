@@ -8,7 +8,7 @@ let mySound;
 
 function preload() {
   soundFormats('mp3', 'ogg');
-  mySound = loadSound('boing1.mp3');
+  mySound = loadSound('crunch.wav');
 }
 
 function setup() {
@@ -50,21 +50,25 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("green");
+    		stroke("black");
         strokeWeight(3);
     		fill("blue");
-		    ellipse(this.x,this.y,20,20);
+        ellipse(this.x,this.y,40,90)
+        ellipse(this.x-5,this.y-30,8,8)
+        ellipse(this.x+5,this.y-30,8,8)
         line(this.x,this.y, this.x, this.y+40);
-        line(this.x, this.y+40, this.x-20, this.y+60);
-        line(this.x, this.y+40, this.x+10, this.y+50);
-        line(this.x+10, this.y+50, this.x+5, this.y+60);
-        line(this.x, this.y+15, this.x-10, this.y+25);
-        line(this.x-10, this.y+25, this.x+10, this.y+35);
+
 	}
 
 	moveMe(){
     if (keyIsDown(UP_ARROW)) { //if you hold the up arrow, move up by speed
        this.y -= this.speed;
+    }
+    if (keyIsDown(LEFT_ARROW)) { //if you hold the up arrow, move up by speed
+       this.x -= this.speed;
+    }
+    if (keyIsDown(RIGHT_ARROW)) { //if you hold the up arrow, move up by speed
+       this.x += this.speed;
     }
 
     if (keyIsDown(DOWN_ARROW)) { // if you hold the down arrow, move down by speed
@@ -94,7 +98,7 @@ class Ball {
     		stroke(0);
         	strokeWeight(1);
     		fill("red");
-		ellipse(this.x,this.y,10,10);
+		ellipse(this.x,this.y,30,5);
 	}
 
 	//update the location of the ball, so it moves across the screen
